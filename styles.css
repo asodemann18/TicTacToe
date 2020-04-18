@@ -1,3 +1,8 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #2a2a2a;
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -7,18 +12,19 @@
 }
 
 .x-column, .o-column {
-  background-color: gray;
+  background-color: #F28482;
   grid-area: "article1";
   text-align: center;
-  border: 5px solid black;
+  border: 5px solid #E3D081;
   height: 100vh;
 }
 
 .game-column {
-  background-color: pink;
+  background-color: #00CECB;
   grid-area: "article2";
   text-align: center;
-  border: 5px solid red;
+  border-top: 5px solid #E3D081;
+  border-bottom: 5px solid #E3D081;
 }
 
 .board {
@@ -27,6 +33,6 @@
   grid-template-rows: repeat(3, 1fr);
   height: 350px;
   width: 450px;
-  background-color: white;
+  background-color: #00CECB;
   margin: 100px auto;
 }
