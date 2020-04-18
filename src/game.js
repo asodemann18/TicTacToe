@@ -5,10 +5,18 @@ class Game {
     this.board = [[0, 0, 0],
                   [0, 0, 0],
                   [0, 0, 0]];
+    this.xTurn = true;
+    this.oTurn = false;
   }
 
   playersMove(row, column) {
-    this.board[row][column] = this.playerX.token;
+    if (this.xTurn === true) {
+      this.board[row][column] = this.playerX.token;
+      this.xTurn = false;
+      this.oTurn = true;
+    } else if (this.oTurn === true) {
+      this.board[row][column] = this.playerO.token;
+    }
   }
 }
 
