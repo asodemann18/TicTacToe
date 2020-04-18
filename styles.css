@@ -1,0 +1,32 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "x-column game-column game-column o-column";
+}
+
+.x-column, .o-column {
+  background-color: gray;
+  grid-area: "article1";
+  text-align: center;
+  border: 5px solid black;
+  height: 100vh;
+}
+
+.game-column {
+  background-color: pink;
+  grid-area: "article2";
+  text-align: center;
+  border: 5px solid red;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);;
+  grid-template-rows: repeat(3, 1fr);
+  height: 350px;
+  width: 450px;
+  background-color: white;
+  margin: 100px auto;
+}
