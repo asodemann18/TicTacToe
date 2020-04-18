@@ -5,10 +5,20 @@ class Game {
     this.board = [[0, 0, 0],
                   [0, 0, 0],
                   [0, 0, 0]];
+    this.xTurn = true;
+    this.oTurn = false;
   }
 
   playersMove(row, column) {
-    this.board[row][column] = this.playerX.token;
+    if (this.xTurn === true && this.board[row][column] === 0) {
+      this.board[row][column] = this.playerX.token;
+      this.xTurn = false;
+      this.oTurn = true;
+    } else if (this.oTurn === true && this.board[row][column] === 0) {
+      this.board[row][column] = this.playerO.token;
+      this.oTurn = false;
+      this.xTurn = true;
+    }
   }
 }
 
@@ -16,8 +26,8 @@ class Game {
 
 // Two Player instances
 // A way to keep track of the data for the game board
-
 // A way to keep track of which player’s turn it currently is
+
 // A way to check the Game’s board data for win conditions
 // A way to detect when a game is a draw (no one has won)
 // A way to save a winning Game’s board data to the correct player’s wins array
