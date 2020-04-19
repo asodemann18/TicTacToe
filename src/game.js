@@ -32,14 +32,17 @@ class Game {
           this.board[0] !== "-") {
         console.log(`${this.board[0]} Wins!`);
         this.win = true;
+        this.board[0] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board)
       } else if((this.board[3] === this.board[4] && this.board[4] === this.board[5]) &&
                  this.board[3] !== "-") {
         console.log(`${this.board[3]} Wins!`);
         this.win = true;
+        this.board[3] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board)
       } else if((this.board[6] === this.board[7] && this.board[7] === this.board[8]) &&
                  this.board[6] !== "-") {
         console.log(`${this.board[6]} Wins!`);
         this.win = true;
+        this.board[6] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board)
       }
   }
 
@@ -48,14 +51,17 @@ class Game {
           this.board[0] !== "-") {
         console.log(`${this.board[0]} Wins!`);
         this.win = true;
+        this.board[0] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board)
       } else if((this.board[1] === this.board[4] && this.board[4] === this.board[7]) &&
                  this.board[1] !== "-") {
         console.log(`${this.board[1]} Wins!`);
         this.win = true;
+        this.board[1] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board)
       } else if((this.board[2] === this.board[5] && this.board[5] === this.board[8]) &&
                  this.board[2] !== "-") {
         console.log(`${this.board[2]} Wins!`);
         this.win = true;
+        this.board[2] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board)
       }
   }
 
@@ -64,10 +70,12 @@ class Game {
           this.board[4] !== "-") {
         console.log(`${this.board[4]} Wins!`);
         this.win = true;
+        this.board[4] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board)
       } else if((this.board[2] === this.board[4] && this.board[4] === this.board[6]) &&
                  this.board[4] !== "-") {
         console.log(`${this.board[4]} Wins!`);
         this.win = true;
+        this.board[4] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board)
       }
   }
 
@@ -86,4 +94,5 @@ class Game {
 // A way to detect when a game is a draw (no one has won)
 
 // A way to save a winning Game’s board data to the correct player’s wins array (push winning board into this.playerX/0.wins array)
+
 // A way to reset the Game’s board to begin a new game
