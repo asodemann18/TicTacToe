@@ -2,58 +2,132 @@ class Game {
   constructor() {
     this.playerX = new Player('X')
     this.playerO = new Player('O')
-    this.board = [["-", "-", "-"],
-                  ["-", "-", "-"],
-                  ["-", "-", "-"]];
+    // this.board = [["-", "-", "-"],
+    //               ["-", "-", "-"],
+    //               ["-", "-", "-"]];
+
+    this.board = ["-", "-", "-", "-", "-", "-", "-", "-", "-"]
     this.xTurn = true;
     this.oTurn = false;
+    this.win = false;
+    this.playCount = 0;
   }
 
-  playersMove(row, column) {
-    if(this.xTurn === true && this.board[row][column] === "-") {
-      this.board[row][column] = this.playerX.token;
-      this.xTurn = false;
-      this.oTurn = true;
-    } else if(this.oTurn === true && this.board[row][column] === "-") {
-      this.board[row][column] = this.playerO.token;
-      this.oTurn = false;
-      this.xTurn = true;
+  playersMove(space) {
+    if(this.xTurn === true && this.board[space] === "-") {
+      this.board[space] = this.playerX.token;
+           this.xTurn = false;
+           this.oTurn = true;
+           this.playCount++;
+    } else if(this.oTurn === true && this.board[space] === "-") {
+         this.board[space] = this.playerO.token;
+         this.oTurn = false;
+         this.xTurn = true;
+         this.playCount++;
     }
     this.horizontalWin();
-    //this.verticalWin();
-    this.diagonalWins();
+    this.verticalWin();
+    this.diagonalWin();
+    this.noWin();
   }
-//!this.board[i].includes(0)
+  // playersMove(row, column) {
+  //   if(this.xTurn === true && this.board[row][column] === "-") {
+  //     this.board[row][column] = this.playerX.token;
+  //     this.xTurn = false;
+  //     this.oTurn = true;
+  //   } else if(this.oTurn === true && this.board[row][column] === "-") {
+  //     this.board[row][column] = this.playerO.token;
+  //     this.oTurn = false;
+  //     this.xTurn = true;
+  //   }
+  //   this.horizontalWin();
+  //   //this.verticalWin();
+  //   this.diagonalWin();
+  //   this.noWin();
+  // }
+
+  // horizontalWin() {
+  //   for(var i = 0; i < this.board.length; i++) {
+  //     if((this.board[i][0] === this.board[i][1] && this.board[i][1] === this.board[i][2]) && !this.board[i].includes("-")) {
+  //       console.log(`${this.board[i][0]} Wins!`);
+  //       this.win = true;
+  //     }
+  //   }
+  // }
+
   horizontalWin() {
-    for(var i = 0; i < this.board.length; i++) {
-      if((this.board[i][0] === this.board[i][1] && this.board[i][1] === this.board[i][2]) && !this.board[i].includes("-")) {
-        console.log(`${this.board[i][0]} Wins!`);
-        return true;
+      if((this.board[0] === this.board[1] && this.board[1] === this.board[2]) &&
+          this.board[0] !== "-") {
+        console.log(`${this.board[0]} Wins!`);
+        this.win = true;
+      } else if((this.board[3] === this.board[4] && this.board[4] === this.board[5]) &&
+                 this.board[3] !== "-") {
+        console.log(`${this.board[3]} Wins!`);
+        this.win = true;
+      } else if((this.board[6] === this.board[7] && this.board[7] === this.board[8]) &&
+                 this.board[6] !== "-") {
+        console.log(`${this.board[6]} Wins!`);
+        this.win = true;
       }
-    }
   }
+
+  // verticalWin() {
+  //   for(var i = 0; i < this.board.length; i++) {
+  //     if(this.board[0][i] === this.board[1][i] && this.board[1][i] === this.board[2][i]) {
+  //         console.log(`${this.board[0][i]} Wins!`);
+  //         this.win = true;
+  //     }
+  //   }
+  // }
 
   verticalWin() {
-    for(var i = 0; i < this.board.length; i++) {
-      if(this.board[0][i] === this.board[1][i] && this.board[1][i] === this.board[2][i]) {
-          console.log(`${this.board[0][i]} Wins!`);
-          return true;
+      if((this.board[0] === this.board[3] && this.board[3] === this.board[6]) &&
+          this.board[0] !== "-") {
+        console.log(`${this.board[0]} Wins!`);
+        this.win = true;
+      } else if((this.board[1] === this.board[4] && this.board[4] === this.board[7]) &&
+                 this.board[1] !== "-") {
+        console.log(`${this.board[1]} Wins!`);
+        this.win = true;
+      } else if((this.board[2] === this.board[5] && this.board[5] === this.board[8]) &&
+                 this.board[2] !== "-") {
+        console.log(`${this.board[2]} Wins!`);
+        this.win = true;
       }
-    }
   }
 
-  diagonalWins() {
-    if((this.board[0][0] === this.board[1][1] && this.board[1][1] === this.board[2][2]) &&
-        this.board[0][0] !== "-" && this.board[1][1] !== "-" && this.board[2][2] !== "-") {
-      console.log(`${this.board[1][1]} Wins!`)
-      return true;
-    } else if((this.board[0][2] === this.board[1][1] && this.board[1][1] === this.board[2][0]) &&
-               this.board[0][2] !== "-" && this.board[1][1] !== "-" && this.board[2][0] !== "-") {
-                 console.log(`${this.board[1][1]} Wins!`)
-                 return true;
-               }
+  // diagonalWin() {
+  //   if((this.board[0][0] === this.board[1][1] && this.board[1][1] === this.board[2][2]) &&
+  //       this.board[0][0] !== "-" && this.board[1][1] !== "-" && this.board[2][2] !== "-") {
+  //         console.log(`${this.board[1][1]} Wins!`)
+  //         this.win = true;
+  //   } else if((this.board[0][2] === this.board[1][1] && this.board[1][1] === this.board[2][0]) &&
+  //              this.board[0][2] !== "-" && this.board[1][1] !== "-" && this.board[2][0] !== "-") {
+  //                console.log(`${this.board[1][1]} Wins!`)
+  //                this.win = true;
+  //              }
+  // }
+
+  diagonalWin() {
+      if((this.board[0] === this.board[4] && this.board[4] === this.board[8]) &&
+          this.board[4] !== "-") {
+        console.log(`${this.board[4]} Wins!`);
+        this.win = true;
+      } else if((this.board[2] === this.board[4] && this.board[4] === this.board[6]) &&
+                 this.board[4] !== "-") {
+        console.log(`${this.board[4]} Wins!`);
+        this.win = true;
+      }
+  }
+
+  noWin() {
+      if (this.playCount > 8 && this.win === false) {
+        console.log("It's a Draw!");
+      }
   }
 }
+
+
 
 
 
@@ -63,5 +137,6 @@ class Game {
 // A way to check the Game’s board data for win conditions
 
 // A way to detect when a game is a draw (no one has won)
+
 // A way to save a winning Game’s board data to the correct player’s wins array (push winning board into this.playerX/0.wins array)
 // A way to reset the Game’s board to begin a new game
