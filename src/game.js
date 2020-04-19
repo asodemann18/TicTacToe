@@ -112,5 +112,4 @@ class Game {
 // A way to check the Game’s board data for win conditions
 // A way to detect when a game is a draw (no one has won)
 // A way to save a winning Game’s board data to the correct player’s wins array (push winning board into this.playerX/0.wins array)
-
 // A way to reset the Game’s board to begin a new game
