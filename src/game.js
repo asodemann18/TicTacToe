@@ -79,6 +79,7 @@ class Game {
         console.log(`${this.board[4]} Wins!`);
         this.win = true;
         this.board[4] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board);
+        this.restartGame();
       } else if((this.board[2] === this.board[4] && this.board[4] === this.board[6]) &&
                  this.board[4] !== "-") {
         console.log(`${this.board[4]} Wins!`);
