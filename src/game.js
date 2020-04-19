@@ -20,7 +20,8 @@ class Game {
       this.xTurn = true;
     }
     this.horizontalWin();
-    this.verticalWin();
+    //this.verticalWin();
+    this.diagonalWins();
   }
 //!this.board[i].includes(0)
   horizontalWin() {
@@ -34,11 +35,23 @@ class Game {
 
   verticalWin() {
     for(var i = 0; i < this.board.length; i++) {
-      if((this.board[0][i] === this.board[1][i] && this.board[1][i] === this.board[2][i])) {
+      if(this.board[0][i] === this.board[1][i] && this.board[1][i] === this.board[2][i]) {
           console.log(`${this.board[0][i]} Wins!`);
           return true;
       }
     }
+  }
+
+  diagonalWins() {
+    if((this.board[0][0] === this.board[1][1] && this.board[1][1] === this.board[2][2]) &&
+        this.board[0][0] !== "-" && this.board[1][1] !== "-" && this.board[2][2] !== "-") {
+      console.log(`${this.board[1][1]} Wins!`)
+      return true;
+    } else if((this.board[0][2] === this.board[1][1] && this.board[1][1] === this.board[2][0]) &&
+               this.board[0][2] !== "-" && this.board[1][1] !== "-" && this.board[2][0] !== "-") {
+                 console.log(`${this.board[1][1]} Wins!`)
+                 return true;
+               }
   }
 }
 
@@ -47,7 +60,6 @@ class Game {
 // Two Player instances
 // A way to keep track of the data for the game board
 // A way to keep track of which player’s turn it currently is
-
 // A way to check the Game’s board data for win conditions
 
 // A way to detect when a game is a draw (no one has won)
