@@ -30,8 +30,10 @@ function changeTurnText() {
 function changeWinText() {
   if(game.win === true && game.xTurn === false) {
       turn.innerText = `${game.playerX.token} Wins!`;
+      game.playerX.saveWinsToStorage();
   } else if(game.win === true && game.oTurn === false) {
       turn.innerText = `${game.playerO.token} Wins!`;
+      game.playerO.saveWinsToStorage();
   } else if(game.playCount > 8 && game.win === false) {
       turn.innerText = "It's a draw!";
   }
