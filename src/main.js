@@ -57,7 +57,7 @@ function displayOWins(newOWin) {
 }
 
 function resetBoard() {
-  board.style.pointerEvents = "none";
+  //board.style.pointerEvents = "none";
   setTimeout(function() {
     var box = document.querySelectorAll('.box');
     for(var i = 0; i < box.length; i++) {
