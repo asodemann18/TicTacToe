@@ -12,7 +12,7 @@ class Game {
   }
 
   playersMove(space) {
-    if(this.xTurn === true && this.board[space] === "-") {
+    if(this.xTurn === true && (this.board[space] !== this.playerX.token || this.board[space] !== this.playerX.token)) {
       this.board[space] = this.playerX.token;
         this.xTurn = false;
         this.oTurn = true;
@@ -22,7 +22,7 @@ class Game {
         this.diagonalWin();
         this.noWin();
         return this.playerX.token;
-    } else if(this.oTurn === true && this.board[space] === "-") {
+    } else if(this.oTurn === true && (this.board[space] !== this.playerX.token || this.board[space] !== this.playerX.token)) {
         this.board[space] = this.playerO.token;
         this.oTurn = false;
         this.xTurn = true;

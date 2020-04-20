@@ -7,8 +7,10 @@ board.addEventListener('click', playGame);
 function playGame(event) {
   var entireBoard = event.target;
   var specificBox = event.target.dataset.index
-  entireBoard.innerText = game.playersMove(specificBox);
-  console.log(game.board);
-  console.log(game.playerX.wins);
-  console.log(game.playerO.wins);
+  if(entireBoard.innerText === "") {
+    entireBoard.innerText = game.playersMove(specificBox);
+    console.log(game.board);
+    console.log(game.playerX.wins);
+    console.log(game.playerO.wins);
+  }
 }
