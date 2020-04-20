@@ -17,20 +17,12 @@ class Game {
       this.xTurn = false;
       this.oTurn = true;
       this.playCount++;
-      // this.horizontalWin();
-      // this.verticalWin();
-      // this.diagonalWin();
-      // this.noWin();
       return this.playerX.token;
     } else if(this.oTurn === true) {
         this.board[space] = this.playerO.token;
         this.oTurn = false;
         this.xTurn = true;
         this.playCount++;
-        // this.horizontalWin();
-        // this.verticalWin();
-        // this.diagonalWin();
-        // this.noWin();
         return this.playerO.token;
     }
   }
