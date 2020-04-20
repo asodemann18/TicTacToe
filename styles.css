@@ -1,4 +1,4 @@
-body, .turn {
+body, .turn, .x-wins, .o-wins {
   font-family: "Open Sans", sans-serif;
   color: #2a2a2a;
 }

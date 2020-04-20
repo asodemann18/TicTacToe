@@ -31,10 +31,22 @@ function changeWinText() {
   if(game.win === true && game.xTurn === false) {
       turn.innerText = `${game.playerX.token} Wins!`;
       game.playerX.saveWinsToStorage();
+      displayXWins(game.playerX.wins.length);
   } else if(game.win === true && game.oTurn === false) {
       turn.innerText = `${game.playerO.token} Wins!`;
       game.playerO.saveWinsToStorage();
+      displayOWins(game.playerO.wins.length);
   } else if(game.playCount > 8 && game.win === false) {
       turn.innerText = "It's a draw!";
   }
+}
+
+function displayXWins(newXWin) {
+  var xWins = document.querySelector('.x-wins');
+  xWins.innerText = `${newXWin} Wins`;
+}
+
+function displayOWins(newOWin) {
+  var oWins = document.querySelector('.o-wins');
+  oWins.innerText = `${newOWin} Wins`;
 }
