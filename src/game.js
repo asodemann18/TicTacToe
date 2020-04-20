@@ -14,14 +14,16 @@ class Game {
   playersMove(space) {
     if(this.xTurn === true && this.board[space] === "-") {
       this.board[space] = this.playerX.token;
-           this.xTurn = false;
-           this.oTurn = true;
-           this.playCount++;
+        this.xTurn = false;
+        this.oTurn = true;
+        this.playCount++;
+        return this.playerX.token;
     } else if(this.oTurn === true && this.board[space] === "-") {
-         this.board[space] = this.playerO.token;
-         this.oTurn = false;
-         this.xTurn = true;
-         this.playCount++;
+        this.board[space] = this.playerO.token;
+        this.oTurn = false;
+        this.xTurn = true;
+        this.playCount++;
+        return this.playerO.token;
     }
     this.horizontalWin();
     this.verticalWin();
@@ -79,6 +81,7 @@ class Game {
         console.log(`${this.board[4]} Wins!`);
         this.win = true;
         this.board[4] === this.playerX.token ? this.playerX.wins.push(this.board) : this.playerO.wins.push(this.board);
+        this.restartGame();
       } else if((this.board[2] === this.board[4] && this.board[4] === this.board[6]) &&
                  this.board[4] !== "-") {
         console.log(`${this.board[4]} Wins!`);
@@ -111,5 +114,4 @@ class Game {
 // A way to check the Game’s board data for win conditions
 // A way to detect when a game is a draw (no one has won)
 // A way to save a winning Game’s board data to the correct player’s wins array (push winning board into this.playerX/0.wins array)
-
 // A way to reset the Game’s board to begin a new game
