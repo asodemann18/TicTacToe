@@ -8,10 +8,10 @@ body, .turn, .x-wins, .o-wins {
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "x-column game-column game-column o-column";
+    "outer-column game-column game-column outer-column";
 }
 
-.x-column, .o-column {
+.outer-column {
   background-color: #F28482;
   grid-area: "article1";
   text-align: center;
@@ -21,7 +21,7 @@ body, .turn, .x-wins, .o-wins {
 
 .game-column {
   background-color: #00CECB;
-  grid-area: "article2";
+  grid-area: "game-column";
   text-align: center;
   border-top: 5px solid #E3D081;
   border-bottom: 5px solid #E3D081;
