@@ -1,9 +1,10 @@
+
 var game = new Game();
 var board = document.querySelector('.board');
 var turn = document.querySelector('.turn')
 
-
-
+window.onload = displayXSavedwins();
+window.onload = displayOSavedwins();
 board.addEventListener('click', playGame);
 
 function playGame(event) {
@@ -16,12 +17,7 @@ function playGame(event) {
     game.diagonalWin();
     game.noWin();
     changeTurnText();
-    changeWinText();
-    // console.log(game.playerX.wins);
-    // console.log(game.playerO.wins);
-    // //console.log(game.xTurn);
-    // console.log(game.win);
-    // console.log(game.playCount);
+    changeWinStats();
   }
 }
 
@@ -29,16 +25,16 @@ function changeTurnText() {
   game.xTurn === true ? turn.innerText = `It's ${game.playerX.token}'s Turn` : turn.innerText = `It's ${game.playerO.token}'s Turn`;
 }
 
-function changeWinText() {
+function changeWinStats() {
   if(game.win === true && game.xTurn === false) {
       turn.innerText = `${game.playerX.token} Wins!`;
-      game.playerX.saveWinsToStorage();
-      displayXWins(game.playerX.wins.length);
+      game.playerX.saveWinsToStorage(game.playerX.token);
+      displayWins('.x-wins', game.playerX.wins.length );
       resetBoard();
   } else if(game.win === true && game.oTurn === false) {
       turn.innerText = `${game.playerO.token} Wins!`;
-      game.playerO.saveWinsToStorage();
-      displayOWins(game.playerO.wins.length);
+      game.playerO.saveWinsToStorage(game.playerO.token);
+      displayWins('.o-wins', game.playerO.wins.length );
       resetBoard();
   } else if(game.playCount > 8 && game.win === false) {
       turn.innerText = "It's a draw!";
@@ -46,23 +42,32 @@ function changeWinText() {
   }
 }
 
-function displayXWins(newXWin) {
-  var xWins = document.querySelector('.x-wins');
-  xWins.innerText = `${newXWin} Wins`;
+function displayWins(selectClass, lengthWins) {
+  var wins = document.querySelector(selectClass);
+  wins.innerText = `${lengthWins} Wins`;
 }
 
-function displayOWins(newOWin) {
-  var oWins = document.querySelector('.o-wins');
-  oWins.innerText = `${newOWin} Wins`;
+function displayXSavedwins() {
+  storage(game.playerX);
+  displayWins('.x-wins', game.playerX.wins.length );
+}
+
+function displayOSavedwins() {
+  storage(game.playerO);
+  displayWins('.o-wins', game.playerO.wins.length );
 }
 
 function resetBoard() {
-  board.style.pointerEvents = "none";
   setTimeout(function() {
     var box = document.querySelectorAll('.box');
     for(var i = 0; i < box.length; i++) {
       box[i].innerText = ""
     }
-    game.restartGame()
+    game.restartGame();
+    changeTurnText();
   }, 2000);
+}
+
+function storage(player) {
+    player.retrieveWinsFromStorage(player.token);
 }
