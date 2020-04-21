@@ -17,6 +17,7 @@ body, .turn, .x-wins, .o-wins {
   text-align: center;
   border: 5px solid #E3D081;
   height: 100vh;
+  overflow: auto;
 }
 
 .game-column {
