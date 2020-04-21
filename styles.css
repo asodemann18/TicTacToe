@@ -19,7 +19,7 @@ body, .turn, .x-wins, .o-wins {
   height: 100vh;
 }
 
-.all-boards {
+.all-boards-x, .all-boards-o {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
