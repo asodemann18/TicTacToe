@@ -61,20 +61,23 @@ function displayXboards() {
         <article class="mini-box6">${game.playerX.wins[i][6]}</article>
         <article class="mini-box7">${game.playerX.wins[i][7]}</article>
         <article class="mini-box8">${game.playerX.wins[i][8]}</article>
-      </article>`
+      </article>`;
     }
   allBoardsSection.insertAdjacentHTML('beforeend', miniBoard);
 }
 
 
 function displayXSavedwins() {
-  storage(game.playerX);
-  displayWins('.x-wins', game.playerX.wins.length );
+  getLocalstorage(game.playerX);
+  displayWins('.x-wins', game.playerX.wins.length);
+  if(game.playerX.wins.length > 0) {
+    displayXboards();
+  }
 }
 
 function displayOSavedwins() {
-  storage(game.playerO);
-  displayWins('.o-wins', game.playerO.wins.length );
+  getLocalstorage(game.playerO);
+  displayWins('.o-wins', game.playerO.wins.length);
 }
 
 function resetBoard() {
@@ -88,6 +91,6 @@ function resetBoard() {
   }, 2000);
 }
 
-function storage(player) {
+function getLocalstorage(player) {
     player.retrieveWinsFromStorage(player.token);
 }
