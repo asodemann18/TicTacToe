@@ -32,3 +32,12 @@ The goal of this project is to build a Tic Tac Toe game that has a board in the 
 * Writing DRY code, especially for the win logic
 * Displaying the mini game boards on each players' side
 * Control flow with localStorage
+
+## In Action:
+#### Full Gameplay:
+
+<img src="http://g.recordit.co/SvjrFuxkG9.gif"/>
+
+#### Scroll Feature:
+
+<img src="http://g.recordit.co/4q96jfGI8O.gif"/>
