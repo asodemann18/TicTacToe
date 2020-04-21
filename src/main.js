@@ -1,8 +1,9 @@
+
 var game = new Game();
+//storage(game.playerX);
+//storage(game.playerO);
 var board = document.querySelector('.board');
 var turn = document.querySelector('.turn')
-
-
 
 board.addEventListener('click', playGame);
 
@@ -27,17 +28,13 @@ function changeTurnText() {
 function changeWinStats() {
   if(game.win === true && game.xTurn === false) {
       turn.innerText = `${game.playerX.token} Wins!`;
-      game.playerX.saveWinsToStorage();
-      console.log(game.playerX.wins);
-      console.log(game.playerO.wins);
-      displayXWins(game.playerX.wins.length);
+      game.playerX.saveWinsToStorage(game.playerX.token);
+      displayWins('.x-wins', game.playerX.wins.length );
       resetBoard();
   } else if(game.win === true && game.oTurn === false) {
       turn.innerText = `${game.playerO.token} Wins!`;
-      game.playerO.saveWinsToStorage();
-      console.log(game.playerX.wins);
-      console.log(game.playerO.wins);
-      displayOWins(game.playerO.wins.length);
+      game.playerO.saveWinsToStorage(game.playerO.token);
+      displayWins('.o-wins', game.playerO.wins.length );
       resetBoard();
   } else if(game.playCount > 8 && game.win === false) {
       turn.innerText = "It's a draw!";
@@ -45,14 +42,9 @@ function changeWinStats() {
   }
 }
 
-function displayXWins(newXWin) {
-  var xWins = document.querySelector('.x-wins');
-  xWins.innerText = `${newXWin} Wins`;
-}
-
-function displayOWins(newOWin) {
-  var oWins = document.querySelector('.o-wins');
-  oWins.innerText = `${newOWin} Wins`;
+function displayWins(selectClass, lengthWins) {
+  var wins = document.querySelector(selectClass);
+  wins.innerText = `${lengthWins} Wins`;
 }
 
 function resetBoard() {
@@ -64,4 +56,8 @@ function resetBoard() {
     game.restartGame();
     changeTurnText();
   }, 2000);
+}
+
+function storage(player) {
+  player.retrieveWinsFromStorage(player.token);
 }
