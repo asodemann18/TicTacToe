@@ -8,10 +8,10 @@ body, .turn, .x-wins, .o-wins {
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "x-column game-column game-column o-column";
+    "outer-column game-column game-column outer-column";
 }
 
-.x-column, .o-column {
+.outer-column {
   background-color: #F28482;
   grid-area: "article1";
   text-align: center;
@@ -19,9 +19,64 @@ body, .turn, .x-wins, .o-wins {
   height: 100vh;
 }
 
+.all-boards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
+.mini-boards {
+ background-color: white;
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ grid-template-rows: repeat(3, 1fr);
+ width: 55px;
+ margin: 12px;
+ padding: 10px;
+ justify-content: space-between;
+ /* grid-template-areas: */
+   /* "mini-box0 mini-box1 mini-box2 mini-box3  mini-box4  mini-box5  mini-box6  mini-box7  mini-box8 "; */
+}
+
+/* .mini-box0 {
+  grid-area: "mini-box0";
+}
+
+.mini-box1 {
+  grid-area: "mini-box1";
+}
+
+.mini-box2 {
+  grid-area: "mini-box2";
+}
+
+.mini-box3 {
+  grid-area: "mini-box3";
+}
+
+.mini-box4 {
+  grid-area: "mini-box4";
+}
+
+.mini-box5 {
+  grid-area: "mini-box5";
+}
+
+.mini-box6 {
+  grid-area: "mini-box6";
+}
+
+.mini-box7 {
+  grid-area: "mini-box7";
+}
+
+.mini-box8 {
+  grid-area: "mini-box8";
+} */
+
 .game-column {
   background-color: #00CECB;
-  grid-area: "article2";
+  grid-area: "game-column";
   text-align: center;
   border-top: 5px solid #E3D081;
   border-bottom: 5px solid #E3D081;
