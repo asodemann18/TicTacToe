@@ -85,6 +85,7 @@ function displayOSavedwins() {
 }
 
 function resetBoard() {
+  board.classList.add("avoid-clicks");
   setTimeout(function() {
     var box = document.querySelectorAll('.box');
     for(var i = 0; i < box.length; i++) {
@@ -92,6 +93,7 @@ function resetBoard() {
     }
     game.restartGame();
     changeTurnText();
+    board.classList.remove("avoid-clicks");
   }, 2000);
 }
 

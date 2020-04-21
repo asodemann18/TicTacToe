@@ -113,3 +113,7 @@ body, .turn, .x-wins, .o-wins {
   padding: 10px;
   justify-content: space-between;
 }
+
+.avoid-clicks {
+  pointer-events: none;
+}
