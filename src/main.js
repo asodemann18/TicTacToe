@@ -16,12 +16,7 @@ function playGame(event) {
     game.diagonalWin();
     game.noWin();
     changeTurnText();
-    changeWinText();
-    // console.log(game.playerX.wins);
-    // console.log(game.playerO.wins);
-    // //console.log(game.xTurn);
-    // console.log(game.win);
-    // console.log(game.playCount);
+    changeWinStats();
   }
 }
 
@@ -29,15 +24,19 @@ function changeTurnText() {
   game.xTurn === true ? turn.innerText = `It's ${game.playerX.token}'s Turn` : turn.innerText = `It's ${game.playerO.token}'s Turn`;
 }
 
-function changeWinText() {
+function changeWinStats() {
   if(game.win === true && game.xTurn === false) {
       turn.innerText = `${game.playerX.token} Wins!`;
       game.playerX.saveWinsToStorage();
+      console.log(game.playerX.wins);
+      console.log(game.playerO.wins);
       displayXWins(game.playerX.wins.length);
       resetBoard();
   } else if(game.win === true && game.oTurn === false) {
       turn.innerText = `${game.playerO.token} Wins!`;
       game.playerO.saveWinsToStorage();
+      console.log(game.playerX.wins);
+      console.log(game.playerO.wins);
       displayOWins(game.playerO.wins.length);
       resetBoard();
   } else if(game.playCount > 8 && game.win === false) {
@@ -57,12 +56,12 @@ function displayOWins(newOWin) {
 }
 
 function resetBoard() {
-  //board.style.pointerEvents = "none";
   setTimeout(function() {
     var box = document.querySelectorAll('.box');
     for(var i = 0; i < box.length; i++) {
       box[i].innerText = ""
     }
-    game.restartGame()
+    game.restartGame();
+    changeTurnText();
   }, 2000);
 }
