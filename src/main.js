@@ -1,10 +1,10 @@
 
 var game = new Game();
-//storage(game.playerX);
-//storage(game.playerO);
 var board = document.querySelector('.board');
 var turn = document.querySelector('.turn')
 
+window.onload = displayXSavedwins();
+window.onload = displayOSavedwins();
 board.addEventListener('click', playGame);
 
 function playGame(event) {
@@ -47,6 +47,16 @@ function displayWins(selectClass, lengthWins) {
   wins.innerText = `${lengthWins} Wins`;
 }
 
+function displayXSavedwins() {
+  storage(game.playerX);
+  displayWins('.x-wins', game.playerX.wins.length );
+}
+
+function displayOSavedwins() {
+  storage(game.playerO);
+  displayWins('.o-wins', game.playerO.wins.length );
+}
+
 function resetBoard() {
   setTimeout(function() {
     var box = document.querySelectorAll('.box');
@@ -59,5 +69,5 @@ function resetBoard() {
 }
 
 function storage(player) {
-  player.retrieveWinsFromStorage(player.token);
+    player.retrieveWinsFromStorage(player.token);
 }

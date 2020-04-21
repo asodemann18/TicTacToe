@@ -11,7 +11,9 @@ class Player {
   }
 
   retrieveWinsFromStorage(token) {
-    var getWins = localStorage.getItem(`${token} wins`);
-    this.wins = JSON.parse(getWins);
+    if(localStorage.getItem(`${token} wins`) !== null) {
+      var getWins = localStorage.getItem(`${token} wins`);
+      this.wins = JSON.parse(getWins);
+    }
   }
 }
