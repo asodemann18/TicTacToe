@@ -19,6 +19,21 @@ body, .turn, .x-wins, .o-wins {
   height: 100vh;
 }
 
+.all-boards {display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
+.mini-boards {
+ background-color: white;
+ display: flex;
+ flex-wrap: wrap;
+ width: 50px;
+ justify-content: space-between;
+ margin: 20px;
+ padding: 10px;
+}
+
 .game-column {
   background-color: #00CECB;
   grid-area: "game-column";
