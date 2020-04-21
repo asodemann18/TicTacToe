@@ -13,66 +13,11 @@ body, .turn, .x-wins, .o-wins {
 
 .outer-column {
   background-color: #F28482;
-  grid-area: "article1";
+  grid-area: "outer-column";
   text-align: center;
   border: 5px solid #E3D081;
   height: 100vh;
 }
-
-.all-boards-x, .all-boards-o {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-}
-
-.mini-boards {
- background-color: white;
- display: grid;
- grid-template-columns: repeat(3, 1fr);
- grid-template-rows: repeat(3, 1fr);
- width: 55px;
- margin: 12px;
- padding: 10px;
- justify-content: space-between;
- /* grid-template-areas: */
-   /* "mini-box0 mini-box1 mini-box2 mini-box3  mini-box4  mini-box5  mini-box6  mini-box7  mini-box8 "; */
-}
-
-/* .mini-box0 {
-  grid-area: "mini-box0";
-}
-
-.mini-box1 {
-  grid-area: "mini-box1";
-}
-
-.mini-box2 {
-  grid-area: "mini-box2";
-}
-
-.mini-box3 {
-  grid-area: "mini-box3";
-}
-
-.mini-box4 {
-  grid-area: "mini-box4";
-}
-
-.mini-box5 {
-  grid-area: "mini-box5";
-}
-
-.mini-box6 {
-  grid-area: "mini-box6";
-}
-
-.mini-box7 {
-  grid-area: "mini-box7";
-}
-
-.mini-box8 {
-  grid-area: "mini-box8";
-} */
 
 .game-column {
   background-color: #00CECB;
@@ -84,7 +29,7 @@ body, .turn, .x-wins, .o-wins {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   height: 350px;
   width: 450px;
@@ -121,12 +66,12 @@ body, .turn, .x-wins, .o-wins {
 }
 
 .box3 {
-   border: 3px solid #E3D081;
-   border-left: none;
+  border: 3px solid #E3D081;
+  border-left: none;
 }
 
 .box4 {
-   border: 3px solid #E3D081;
+  border: 3px solid #E3D081;
 }
 
 .box5 {
@@ -149,4 +94,21 @@ body, .turn, .x-wins, .o-wins {
   border: 3px solid #E3D081;
   border-right: none;
   border-bottom: none;
+}
+
+.all-boards-x, .all-boards-o {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
+.mini-boards {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 55px;
+  margin: 12px;
+  padding: 10px;
+  justify-content: space-between;
 }
