@@ -1,7 +1,7 @@
 
 var game = new Game();
 var board = document.querySelector('.board');
-var turn = document.querySelector('.turn')
+var turn = document.querySelector('.turn');
 
 window.onload = displayXSavedwins();
 window.onload = displayOSavedwins();
@@ -10,7 +10,7 @@ board.addEventListener('click', playGame);
 function playGame(event) {
   var entireBoard = event.target;
   var specificBox = event.target.dataset.index;
-  if(entireBoard.innerText === "") {
+  if(entireBoard.innerText === '') {
     entireBoard.innerText = game.playersMove(specificBox);
     game.horizontalWin();
     game.verticalWin();
@@ -27,24 +27,24 @@ function changeTurnText() {
 
 function changeWinStats() {
   if(game.win === true && game.xTurn === false) {
-      turn.innerText = `${game.playerX.token} Wins!`;
-      game.playerX.saveWinsToStorage(game.playerX.token);
-      displayWins('.x-wins', game.playerX.wins.length );
-      displayWinBoards('.all-boards-x', game.playerX);
-      resetBoard();
+    turn.innerText = `${game.playerX.token} Wins!`;
+    game.playerX.saveWinsToStorage(game.playerX.token);
+    displayNumWins('.x-wins', game.playerX.wins.length );
+    displayWinBoards('.all-boards-x', game.playerX);
+    resetBoard();
   } else if(game.win === true && game.oTurn === false) {
       turn.innerText = `${game.playerO.token} Wins!`;
       game.playerO.saveWinsToStorage(game.playerO.token);
-      displayWins('.o-wins', game.playerO.wins.length );
+      displayNumWins('.o-wins', game.playerO.wins.length );
       displayWinBoards('.all-boards-o',game.playerO);
       resetBoard();
   } else if(game.playCount > 8 && game.win === false) {
-      turn.innerText = "It's a draw!";
+      turn.innerText = 'It\'s a draw!';
       resetBoard();
   }
 }
 
-function displayWins(selectClass, lengthWins) {
+function displayNumWins(selectClass, lengthWins) {
   var wins = document.querySelector(selectClass);
   wins.innerText = `${lengthWins} Wins`;
 }
@@ -65,13 +65,12 @@ function displayWinBoards(section, player) {
                       <article class="mini-box8">${player.wins[i][8]}</article>
                     </article>`;
     allBoardsSection.insertAdjacentHTML('afterbegin', miniBoard);
-    }
+  }
 }
-
 
 function displayXSavedwins() {
   getLocalstorage(game.playerX);
-  displayWins('.x-wins', game.playerX.wins.length);
+  displayNumWins('.x-wins', game.playerX.wins.length);
   if(game.playerX.wins.length > 0) {
     displayWinBoards('.all-boards-x', game.playerX);
   }
@@ -79,7 +78,7 @@ function displayXSavedwins() {
 
 function displayOSavedwins() {
   getLocalstorage(game.playerO);
-  displayWins('.o-wins', game.playerO.wins.length);
+  displayNumWins('.o-wins', game.playerO.wins.length);
   if(game.playerO.wins.length > 0) {
     displayWinBoards('.all-boards-o', game.playerO);
   }
@@ -89,7 +88,7 @@ function resetBoard() {
   setTimeout(function() {
     var box = document.querySelectorAll('.box');
     for(var i = 0; i < box.length; i++) {
-      box[i].innerText = ""
+      box[i].innerText = ''
     }
     game.restartGame();
     changeTurnText();
@@ -97,5 +96,5 @@ function resetBoard() {
 }
 
 function getLocalstorage(player) {
-    player.retrieveWinsFromStorage(player.token);
+  player.retrieveWinsFromStorage(player.token);
 }
