@@ -54,16 +54,16 @@ function displayWinBoards(section, player) {
   allBoardsSection.innerHTML = "";
   for(var i = 0; i < player.wins.length; i++) {
     var miniBoard = `<article class="mini-boards">
-                      <article class="mini-box0">${player.wins[i][0]}</article>
-                      <article class="mini-box1">${player.wins[i][1]}</article>
-                      <article class="mini-box2">${player.wins[i][2]}</article>
-                      <article class="mini-box3">${player.wins[i][3]}</article>
-                      <article class="mini-box4">${player.wins[i][4]}</article>
-                      <article class="mini-box5">${player.wins[i][5]}</article>
-                      <article class="mini-box6">${player.wins[i][6]}</article>
-                      <article class="mini-box7">${player.wins[i][7]}</article>
-                      <article class="mini-box8">${player.wins[i][8]}</article>
-                    </article>`;
+                       <article class="mini-box0">${player.wins[i][0]}</article>
+                       <article class="mini-box1">${player.wins[i][1]}</article>
+                       <article class="mini-box2">${player.wins[i][2]}</article>
+                       <article class="mini-box3">${player.wins[i][3]}</article>
+                       <article class="mini-box4">${player.wins[i][4]}</article>
+                       <article class="mini-box5">${player.wins[i][5]}</article>
+                       <article class="mini-box6">${player.wins[i][6]}</article>
+                       <article class="mini-box7">${player.wins[i][7]}</article>
+                       <article class="mini-box8">${player.wins[i][8]}</article>
+                     </article>`;
     allBoardsSection.insertAdjacentHTML('afterbegin', miniBoard);
   }
 }
